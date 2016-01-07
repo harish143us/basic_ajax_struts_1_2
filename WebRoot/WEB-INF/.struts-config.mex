@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/ajaxFilter.do" location="50,50" dimension="358,116" />
+  <StrutsActivity path="/loadFragment.do" location="950,50" dimension="392,116" />
+  <StrutsActivity path="/form/ajaxFilter.jsp" location="650,50" dimension="160,56" />
+  <StrutsActivity path="/loadJSON.do" location="50,250" dimension="427,116" />
+  <StrutsTransition id="/form/ajaxFilter.jsp,null,/ajaxFilter.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="700,106" />
+      <AbsolutePoint location="700,121" />
+      <AbsolutePoint location="408,121" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/form/ajaxFilter.jsp,null,/loadJSON.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="730,106" />
+      <AbsolutePoint location="730,308" />
+      <AbsolutePoint location="477,308" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/ajaxFilter.do,success,/form/ajaxFilter.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="408,78" />
+      <AbsolutePoint location="650,78" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

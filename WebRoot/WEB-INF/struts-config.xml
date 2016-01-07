@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans >
+    <form-bean name="ajaxFilterForm" type="com.yourcompany.struts.form.AjaxFilterForm" />
+
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+    <action 
+      attribute="ajaxFilterForm"
+      input="/form/ajaxFilter.jsp"
+      name="ajaxFilterForm"
+      path="/ajaxFilter"
+      scope="request"
+      type="com.yourcompany.struts.action.AjaxFilterAction">
+      <set-property property="cancellable" value="true" />
+      <forward name="success" path="/form/ajaxFilter.jsp" />
+    </action>
+    
+    <action path="/loadFragment" type="com.yourcompany.struts.action.LoadFragmentAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    
+    <action 
+    	input="/form/ajaxFilter.jsp"
+    	path="/loadJSON" 
+		name="ajaxFilterForm"
+		scope="request"    	 
+    	type="com.yourcompany.struts.action.LoadFragmentJSONAction"
+    >
+    </action>
+
+  </action-mappings>
+
+  <message-resources parameter="com.yourcompany.struts.ApplicationResources" />
+</struts-config>
+
