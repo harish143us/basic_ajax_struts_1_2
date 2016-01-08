@@ -1,4 +1,4 @@
-asdf<%@ page
+<%@ page
 	language="java"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib
