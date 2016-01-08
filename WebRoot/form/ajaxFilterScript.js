@@ -25,11 +25,10 @@ $().ready(function() {
 		var $form = $('form[name="ajaxFilterForm"]');
 		$.getJSON("loadJSON.do").done(function(data) {
 			$.each(data, function(key, val) {
-				// $('#' + key).val(val);
-
 				$form.find("[name=" + key + "]").val(val);
-				// $("[name=" + key +"]").val(val);
 			});
+		}).fail(function() {
+			$("#returnedValue").text("Failed");
 		});
 
 	});// click
