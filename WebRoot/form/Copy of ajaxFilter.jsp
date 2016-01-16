@@ -26,7 +26,6 @@
 	
 	<input type="hidden" id="eventSource"></input>
 	<html:form action="/ajaxFilter" styleId="ajaxFilterForm" method="post">
-	
 			id : <html:text
 			property="id"
 			styleId="id" />
@@ -45,7 +44,7 @@
 
 		
 		<button id="update" form="ajaxFilterForm">Update</button>
-		<html:submit styleId="submitAction" />
+		<html:submit styleId="submit" />
 		
 	</html:form>
 

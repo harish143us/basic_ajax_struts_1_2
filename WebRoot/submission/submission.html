@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>DEMO | jensbits.com | Form Confirm Modal Box</title>
+
+<link rel="stylesheet" type="text/css" href="css/thickbox.css" />
+<link rel="stylesheet" href="/demos/bootstrap/css/bootstrap.min.css" />
+<style>
+body {padding-top: 60px;}
+</style>
+<link rel="stylesheet" href="/demos/bootstrap/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="js/thickbox-compressed.js"></script>
+
+<script>
+            $(function(){
+                
+                // jQuery UI Dialog    
+                        
+                $('#jq-dialog').dialog({
+                    autoOpen: false,
+                    width: 400,
+                    modal: true,
+                    resizable: false,
+                    buttons: {
+                        "Submit Form": function() {
+                            document.testconfirmJQ.submit();
+                        },
+                        "Cancel": function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+                
+                $('form#testconfirmJQ').submit(function(e){
+                	e.preventDefault();
+                    $("span#dialog-email strong").html($("input#emailJQ").val());
+                    $('#jq-dialog').dialog('open');
+                });
+                
+                //Thickbox
+                
+                $('form#testconfirmTB').submit(function(e){
+                	e.preventDefault();
+                    $("p#TB-email").html($("input#emailTB").val());
+                    tb_show('Verify Form Thickbox Style','TB_inline?height=155&amp;width=300&amp;inlineId=TBcontent');
+                });
+                
+                $('input#TBcancel').click(function(){
+                    tb_remove();
+                });
+                
+                $('input#TBsubmit').click(function(){
+                    document.testconfirmTB.submit();
+                });
+            
+                
+            });
+</script>
+<script>
+//If you copy from source, please delete this section. Thanks, jen.
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4945154-2']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackEvent', 'Demo', 'View', '/demos/forms/index.php' ]);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+ //delete all the way to here.
+</script>
+</head>
+
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+        	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+          <a class="brand" href="index.php">Modal Confirmation Dialog on Form Submit: Javascript, jQuery UI, and Thickbox Varieties</a>
+          <div class="nav-collapse">
+              <ul class="nav">
+                <li class="active"><a href="http://www.jensbits.com/">Home</a></li>
+              </ul>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">   
+<div class="hero-unit">
+    <h1>Form Submit Confirmation</h1>
+<p>3 ways confirm submission of a form; Javacript Return Confirm, Modal jQuery and Thickbox</p>
+
+<h3>Form Submit Confirmation Javascript</h3>
+
+<form id="testconfirmJS" name="testconfirmJS" method="post">
+<fieldset>
+<div class="control-group">
+<label for="email">E-mail:</label>
+<div class="controls">
+<input id="emailJS" type="text" name="emailJS" value="" />
+</div>
+	</div>
+<div class="form-actions">
+<input class="btn btn-primary" id="submitJS" name="submitJS" type="submit" value="Submit" onClick="return confirm('You entered your e-mail address as:\n\n' + form.elements['emailJS'].value + '\n\nSelect OK if correct or Cancel to edit.')" />
+</div>
+</fieldset>
+</form>
+
+<h3>Form Submit Confirmation jQuery UI</h3>
+<p class='alert alert-success'>jQuery UI worked!!! Your e-mail address is </p>
+<form id="testconfirmJQ" name="testconfirmJQ" method="post">
+<fieldset>
+<div class="control-group">
+	<label for="emailJQ">E-mail:</label>
+<div class="controls">
+	<input id="emailJQ" type="text" name="emailJQ" value="" />
+</div>
+</div>
+<div class="form-actions">
+	<input class="btn btn-primary" id="submitJQ" name="submitJQ" type="submit" value="Submit" />
+</div>
+</fieldset>
+</form>
+
+<div id="jq-dialog" title="Verify Form jQuery UI Style">
+	<p class="alert alert-error">You entered your e-mail address as: 
+    <span id="dialog-email"><strong></strong></span></p>
+    <p>If this is correct, click Submit Form.</p><p>To edit, click Cancel.<p>
+</div>
+
+
+<h3>Form Submit Confirmation with Thickbox</h3>
+<p class="alert alert-error">Because Thickbox is no longer supported, it may have to be removed from the examples to update the jQuery files in the future.</p>
+
+<form id="testconfirmTB" name="testconfirmTB" method="post">
+<fieldset>
+<div class="control-group">
+<label for="emailTB">E-mail:</label>
+<div class="controls">
+<input id="emailTB" type="text" name="emailTB" value="" />
+</div>
+</div>
+<div class="form-actions">
+<input class="btn btn-primary" id="submitTB" name="submitTB" type="submit" value="Submit" />
+</div>
+</fieldset>
+</form>
+
+
+<div id="TBcontent" style="display: none;"><p>You entered your e-mail address as:</p><p id="TB-email"></p><p>
+If this is correct, click Submit Form.</p><p>To edit, click Cancel.<p>
+<input type="submit" id="TBcancel" value="Cancel" />
+<input type="submit" id="TBsubmit" value="Submit Form" />
+</div>
+
+    <p><a href="/2009/08/10/modal-confirmation-dialog-on-form-submit-javascript-jquery-ui-and-thickbox-varieties/">Return to post on jensbits.com</a></p>
+</div>
+<footer>
+	<p><a class='btn small' href='http://feeds.feedburner.com/jensbits'>Subscribe to the feed</a> or <a class='btn small' href='http://twitter.com/jensbits'>follow jensbits on twitter</a></p>
+	<p>&copy; jensbits.com 2016</p>
+</footer>
+</div>
+<!--<script src="/demos/bootstrap/js/bootstrap.min.js"></script>-->
+</body>
+</html>
